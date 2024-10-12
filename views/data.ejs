@@ -1,0 +1,34 @@
+<table>
+    <thead>
+        <tr>
+          <% if (data.length > 0 && data[0].patient_id) { %>
+            <th>Patient ID</th>
+          <% } %>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <% if (data.length > 0 && data[0].formatted_dob) { %>  <!-- Check for formatted DOB in the first row -->
+              <th>DOB</th>
+            <% } %>
+            <% if (data.length > 0 && data[0].provider_specialty) { %> <!-- Check for Provider Specialty in the first row -->
+              <th>Provider Specialty</th>
+            <% } %>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach(row => {%>
+            <tr>
+              <% if (row.patient_id) { %>
+                    <td><%= row.patient_id %></td>
+                    <% } %>
+                <td> <%= row.first_name %> </td>
+                <td> <%= row.last_name %> </td>
+                <% if (row.formatted_dob) { %>
+                    <td><%= row.formatted_dob %></td>
+                    <% } %>
+                <% if (row.provider_specialty) { %>
+                    <td><%= row.provider_specialty %></td>
+                    <% } %>
+            </tr>
+        <%});%>
+    </tbody>
+</table>
