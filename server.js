@@ -30,7 +30,7 @@ db.connect((err) => {
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views'); 
 
-// Retrieve all patients
+// Questin 1 - Retrieve all patients
 app.get('/patients', (req, res) => {
     const getPatients = "SELECT patient_id, first_name, last_name, DATE_FORMAT(date_of_birth, '%d/%m/%Y') AS formatted_dob  FROM patients"
     db.query(getPatients, (err, data) => {
@@ -42,7 +42,7 @@ app.get('/patients', (req, res) => {
 }) 
 })   
 
-// Retrieve all providers
+// Question 2 - Retrieve all providers
 app.get('/providers', (req, res) => {
     const getProviders = "SELECT first_name, last_name, provider_specialty FROM providers"
     db.query(getProviders, (err, data) => {
@@ -54,7 +54,7 @@ app.get('/providers', (req, res) => {
 }) 
 }) 
 
-// Retrieve patients by first name
+// Question 3 - Retrieve patients by first name
 app.get('/patientsFirstName', (req, res) => {
     const getPatientsFirstName = "SELECT * FROM patients ORDER BY first_name ASC"
     db.query(getPatientsFirstName, (err, data) => {
@@ -66,7 +66,7 @@ app.get('/patientsFirstName', (req, res) => {
 }) 
 }) 
 
-// Retrieve providers by specialty
+// Question 4 - Retrieve providers by specialty
 app.get('/providersSpecialty', (req, res) => {
     const getProvidersSpecialty = "SELECT * FROM providers ORDER BY provider_specialty ASC"
     db.query(getProvidersSpecialty, (err, data) => {
